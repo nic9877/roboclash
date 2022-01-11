@@ -1,7 +1,7 @@
 #include "Globals.h"
 
 void intake(int s) {
-  analogWrite(intakes, s);
+  analogWrite(intakes, abs(s));
 
   if(s < 0) {
     digitalWrite(intake1, HIGH);
@@ -19,7 +19,7 @@ void intakeStop() {
 }
 
 void shooter(int s){
-  analogWrite(shooters, s);
+  analogWrite(shooters, abs(s));
 
   if(s < 0) {
     digitalWrite(shooter1, LOW);
@@ -37,18 +37,18 @@ void shooterStop() {
 }
 
 void roller(int s){
-  analogWrite(lrollers, s);
-  analogWrite(rrollers, s);
+  analogWrite(lrollers, abs(s));
+  analogWrite(rrollers, abs(s));
 
   if(s < 0) {
-    digitalWrite(lroller1, LOW);
-    digitalWrite(lroller2, HIGH);
+    digitalWrite(lroller1, HIGH);
+    digitalWrite(lroller2, LOW);
     digitalWrite(rroller1, LOW);
     digitalWrite(rroller2, HIGH);
   }
   else {
-    digitalWrite(lroller1, HIGH);
-    digitalWrite(lroller2, LOW);
+    digitalWrite(lroller1, LOW);
+    digitalWrite(lroller2, HIGH);
     digitalWrite(rroller1, HIGH);
     digitalWrite(rroller2, LOW);
   }
